@@ -33,14 +33,31 @@ string pseudo_string_formatter(string format_string, vector<string> list_of_para
 		bool replace_character = true;
 		if(format_string[idx] == '{')
 		{
-			if(format_string[idx + 2] == '}')
+			// Get string index number.
+			int next_idx = idx + 1;
+			while(format_string[next_idx] != '}')
 			{
-				idx_number = (int)format_string[idx + 1] - 48;
+				next_idx++;
+
+				if( isdigit(format_string[next_idx]) )
+					next_idx = 0;
+					break;
+
+				if(next_idx == format_string_len)
+					next_idx = 0;
+					break;
+			}
+
+			if(next_idx && (next_idx != idx + 1))
+			{
+				string sub = format_string.substr(idx + 1, next_idx - idx - 1);
+				stringstream str_to_int(sub); 
+				str_to_int >> idx_number;
 
 				if(idx_number < num_of_string_to_replace)
 				{
 					final_string.append(list_of_parameters[idx_number].c_str());
-					idx += 2;
+					idx += next_idx - idx;
 					replace_character = false;
 				}
 			}
