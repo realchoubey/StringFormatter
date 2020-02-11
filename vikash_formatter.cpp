@@ -32,6 +32,7 @@ string get_replaced_string(string format_string, vector<string> list_of_paramete
 			{
 				idx_number = (int)format_string[idx + 1] - 48;
 				final_string.append(list_of_parameters[idx_number].c_str());
+				idx += 2;
 			}
 			else
 			{
@@ -50,16 +51,8 @@ string get_replaced_string(string format_string, vector<string> list_of_paramete
 int main(int argc, char** argv) 
 {
     vector<string> list_replace_str = split(argv[2], ',');
-    cout << list_replace_str.size() << endl;
-
-    vector<string>::iterator itr;
-    for (itr = list_replace_str.begin(); itr != list_replace_str.end(); ++itr)
-    {
-        cout << *itr << endl;
-    }
 
     cout << get_replaced_string(argv[1], list_replace_str) << endl;
-
 
     return 0; 
 }
