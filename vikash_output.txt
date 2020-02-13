@@ -1,0 +1,82 @@
+M307861BELYWN:String_Formatter vikashkumar.choubey$ g++ vikash_formatter.cpp 
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2}} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some {texts define them to include zero} and some do not.
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "Hello {0}{1" 
+Hello {0}{1
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "Hello {0}{1" "infiswift,technologies"
+Hello infiswift{1
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "Hello {0}{1" "infiswift,technologies"
+Hello infiswift{1
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2}{} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some {texts define them to include zero{} and some do not.
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2}{} {1234} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some {texts define them to include zero{} natural34} and some do not.
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2}{} {1234} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some computer} define them to include zerozero natural34} and some do not.
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2}{} {1234} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some {texts define them to include zero{} {1234} and some do not.
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "Hello {0}{-1}" "sfs,sdf"
+Hello sfs{-1}
+
+
+// New Test cases:
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ g++ vikash_formatter.cpp 
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out  "{0}{2}" ",sdf,"
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out  "vikash {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {}}{}{1230234234234234234234}" "1,2,3,4,5,6,7,8,9,0,10,vik"
+vikash 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, vik, {}}{}{1230234234234234234234}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out  "vikash {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {}}{}{1230234234234234234234} {2147483647}" "1,2,3,4,5,6,7,8,9,0,10,vik"
+vikash 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, vik, {}}{}{1230234234234234234234} {2147483647}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "Hello {0}{1" "infiswift,technologies"
+Hello infiswift{1
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2}{} {1234} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some {texts define them to include zero{} {1234} and some do not.
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "In {0} science, the {1} numbers always include {2}. In {3}, some {{4} define them to include {2} and some do not." "computer,natural,zero,mathematics,texts"
+In computer science, the natural numbers always include zero. In mathematics, some {texts define them to include zero and some do not.
+
+// 2 Mail test case:
+M307861BELYWN:String_Formatter vikashkumar.choubey$ g++ vikash_formatter.cpp 
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}" "a,a"
+a
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{0}" ""
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}" ""
+{1}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out 
+Please provide valid inputs. Expecting minimum 1 arguments
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ g++ vikash_formatter.cpp 
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{0}" ""
+{0}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}" ""
+{1}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}" "a"
+{1}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}" "a,a"
+a
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}" "a,aa"
+aa
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ ./a.out "{1}{2}" "a,aa,"
+aa{2}
+
+M307861BELYWN:String_Formatter vikashkumar.choubey$ 

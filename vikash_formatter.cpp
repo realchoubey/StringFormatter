@@ -6,16 +6,17 @@
 using namespace std; 
 
 
-vector<std::string> split(const std::string& s, char delimiter)
+vector<string> split(const string& s, char delimiter)
 {
-   vector<string> tokens;
-   string token;
-   istringstream tokenStream(s);
-   while (std::getline(tokenStream, token, delimiter))
-   {
-      tokens.push_back(token);
-   }
-   return tokens;
+	vector<string> tokens;
+	string token;
+	istringstream tokenStream(s);
+	while(getline(tokenStream, token, delimiter))
+	{
+		tokens.push_back(token);
+	}
+
+	return tokens;
 }
 
 
@@ -27,28 +28,25 @@ string pseudo_string_formatter(string format_string, vector<string> list_of_para
 
 	string final_string;
 
-
-	for( int idx = 0; idx < format_string_len; idx ++)
+	for(int idx = 0; idx < format_string_len; idx++)
 	{
 		bool replace_character = true;
 		if(format_string[idx] == '{')
 		{
 			// Get string index number.
-			int next_idx = idx + 1;
+			int next_idx = idx;
 			while(format_string[next_idx] != '}')
 			{
 				next_idx++;
-
-				if( isdigit(format_string[next_idx]) )
+				if( (!isdigit(format_string[next_idx]) && format_string[next_idx] != '}') 
+				   or next_idx == format_string_len)
+				{
 					next_idx = 0;
 					break;
-
-				if(next_idx == format_string_len)
-					next_idx = 0;
-					break;
+				}
 			}
 
-			if(next_idx && (next_idx != idx + 1))
+			if(next_idx - idx > 1)
 			{
 				string sub = format_string.substr(idx + 1, next_idx - idx - 1);
 				stringstream str_to_int(sub); 
@@ -76,14 +74,20 @@ int main(int argc, char** argv)
 {
 	vector<string> list_replace_str;
 
-	if(argc == 3)
+	if(argc > 1)
 	{
-	    list_replace_str = split(argv[2], ',');
+		if(argc > 2)
+		{
+		    list_replace_str = split(argv[2], ',');
+		}
+
+		string formatted_string = pseudo_string_formatter(argv[1], list_replace_str);
+		cout << formatted_string << endl;
+	}
+	else
+	{
+		cout << "Please provide valid inputs. Expecting minimum 1 arguments" << endl;
 	}
 
-	string formatted_string = pseudo_string_formatter(argv[1], list_replace_str);
-
-	cout << formatted_string << endl;
-
-    return 0; 
+	return 0;
 }
